@@ -10,15 +10,11 @@ public class Flashlight : MonoBehaviour
     public AudioSource turnOn;
     public AudioSource turnOff;
 
-    public bool on;
-    public bool off;
-
-
-
+    public bool Ison;
 
     void Start()
     {
-        off = true;
+        Ison = false;
         flashlight.SetActive(false);
     }
 
@@ -29,19 +25,17 @@ public class Flashlight : MonoBehaviour
     {
         // if (flashlightModel.activeInHierarchy == true)
         
-            if (off && Input.GetButtonDown("F"))
+            if (Ison == false && Input.GetButtonDown("F"))
             {
                 flashlight.SetActive(true);
                 turnOn.Play();
-                off = false;
-                on = true;
+                Ison = true;
             }
-            else if (on && Input.GetButtonDown("F"))
+            else if (Ison == true && Input.GetButtonDown("F"))
             {
                 flashlight.SetActive(false);
                 turnOff.Play();
-                off = true;
-                on = false;
+                Ison = false;
             }
         
        /* else if (flashlightModel.activeInHierarchy == false)
